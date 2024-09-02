@@ -27,5 +27,3 @@ EXPOSE 5000
 
 # Comando de inicio de la aplicación
 CMD ["python", "app.py"]
-
-#prueba

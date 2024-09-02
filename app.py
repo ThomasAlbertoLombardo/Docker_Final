@@ -13,15 +13,8 @@ redis_password = os.getenv('REDIS_PASSWORD', 'mysecret')
 r = redis.Redis(host=redis_host, port=redis_port, password=redis_password, decode_responses=True)
 
 @app.route('/', methods=['GET'])
-def get_count():
-    count = r.get('visits')
-    if count is None:
-        count = 0
-        r.set('visits', count)
-    return jsonify(visits=int(count)), 200
-
-@app.route('/', methods=['POST'])
-def increment_count():
+def get_and_increment_count():
+    # Incrementa el contador en Redis
     count = r.incr('visits')
     return jsonify(visits=count), 200
 
