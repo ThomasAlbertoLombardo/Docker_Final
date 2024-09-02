@@ -24,7 +24,7 @@ Esta es una aplicación web sencilla construida con Flask que implementa un cont
 /////////////// POR COMPLETAR ////////////////////
 docker build -t practica_final-web .
 
-base de datos:
+base de datos.:
 docker run -d --name practica_final-db -e POSTGRES_DB=mi_base_de_datos -e POSTGRES_USER=mi_usuario -e POSTGRES_PASSWORD=mi_contraseña -p 5432:5432 postgres:13
 
 app:

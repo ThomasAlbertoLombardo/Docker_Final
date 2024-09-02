@@ -4,7 +4,7 @@ FROM python:3.9-slim AS build
 # Establecer el directorio de trabajo
 WORKDIR /app
 
-# Copiar archivos necesarios
+# Copiar archivos necesarios.
 COPY requirements.txt .
 
 # Instalar dependencias
