@@ -1,13 +1,14 @@
-# Flask Redis Counter
+# Contador Flask/Redis
 
 ## Descripción
 
-Esta es una aplicación web sencilla construida con Flask que implementa un contador de visitas utilizando Redis como base de datos. La aplicación permite incrementar y visualizar el número de visitas a través de endpoints HTTP.
+Esta es una aplicación web sencilla construida con Flask que implementa un contador de visitas utilizando Redis como base de datos. La aplicación permite visualizar el número de visitas a través de un endpoint HTTP, y el contador de visitas se incrementa automáticamente cada vez que se accede a la ruta principal.
 
 ## Funcionamiento de la Aplicación
 
-- **`GET /`**: Retorna el número actual de visitas.
-- **`POST /`**: Incrementa el contador de visitas en 1 y retorna el nuevo valor.
+- **`GET /`**: Incrementa el contador de visitas en 1 y retorna el nuevo valor en formato JSON.
+  
+Cada vez que se accede a la ruta principal (`/`), el contador de visitas en Redis aumenta y se muestra el valor actualizado.
 
 ## Requisitos
 
@@ -18,22 +19,32 @@ Esta es una aplicación web sencilla construida con Flask que implementa un cont
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/flask-redis-counter.git
+   git clone https://github.com/ThomasAlbertoLombardo/Docker_Final.git
    ```
 
-/////////////// POR COMPLETAR ////////////////////
-docker build -t practica_final-web .
+2. Accede al directorio del proyecto: 
+   ```bash
+   cd Docker_Final  
+   ```
 
-base de datos.:
-docker run -d --name practica_final-db -e POSTGRES_DB=mi_base_de_datos -e POSTGRES_USER=mi_usuario -e POSTGRES_PASSWORD=mi_contraseña -p 5432:5432 postgres:13
+3. Construye y ejecuta los contenedores con Docker Compose:
+   ```bash
+   docker-compose up --build  
+   ```
 
-app:
-docker run -d --name practica_final-web -p 5000:5000 --link practica_final-db:db -e DATABASE_URL=postgresql://mi_usuario:mi_contraseña@db:5432/mi_base_de_datos practica_final-web
+4. Accede a la aplicación en tu navegador web o utiliza curl:
+   
+   - URL: http://localhost:5000
+5. Para verificar el número de visitas:
 
-logs:
-docker logs practica_final-web
-docker logs practica_final-db
+   - Abre tu navegador y visita http://localhost:5000.
+   - Cada vez que accedas a esta URL, el contador de visitas aumentará en 1 y se mostrará el número total de visitas en formato JSON.
 
-detener y eliminar:
-docker stop practica_final-web practica_final-db
-docker rm practica_final-web practica_final-db
+6. Para detener la aplicación y eliminar los contenedores:
+   ```bash
+   docker-compose down  
+   ```
+## Notas
+
+- El servicio Redis se expone en el puerto `6379`, y la aplicación Flask se ejecuta en el puerto `5000`.
+- Los datos de Redis se almacenan de forma persistente en un volumen de Docker llamado `redis_data`.

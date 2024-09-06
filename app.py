@@ -5,9 +5,9 @@ import redis
 app = Flask(__name__)
 
 # Configuración de Redis mediante variables de entorno,
-redis_host = os.getenv('REDIS_HOST', 'redis')
-redis_port = int(os.getenv('REDIS_PORT', 6379))
-redis_password = os.getenv('REDIS_PASSWORD', 'mysecret')
+redis_host = os.getenv('REDIS_HOST')
+redis_port = int(os.getenv('REDIS_PORT'))
+redis_password = os.getenv('REDIS_PASSWORD')
 
 # Inicialización de la conexión Redis
 r = redis.Redis(host=redis_host, port=redis_port, password=redis_password, decode_responses=True)
