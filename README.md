@@ -48,3 +48,6 @@ Cada vez que se accede a la ruta principal (`/`), el contador de visitas en Redi
 
 - El servicio Redis se expone en el puerto `6379`, y la aplicación Flask se ejecuta en el puerto `5000`.
 - Los datos de Redis se almacenan de forma persistente en un volumen de Docker llamado `redis_data`.
+
+
+Para más detalles sobre la estructura del proyecto y la explicación técnica, consulta el archivo de [Explicaciones Detalladas](./EXPLICACIONES.md).
